@@ -6,7 +6,7 @@ class CreateRiders < ActiveRecord::Migration
       t.integer 'Route_Number'
       t.integer 'Stop_On'
       t.time 'Time_On'
-      t.string 'Stop_Off'
+      t.integer 'Stop_Off'
       t.time 'Time_Off'
       t.time 'Time_Difference'
     end
