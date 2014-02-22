@@ -45,6 +45,10 @@ function getArrivalTime(route,stop) {
         diff = diff/1000/60; // diff time is now in mins
         diff = diff.toFixed(0);
         console.log("time diff: " + diff + " mins");
+
+        //set arrival time in html
+        $(".time-mins").text(diff);
+
       
 /*
         $("a").on("click", function (event) {
