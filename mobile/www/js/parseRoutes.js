@@ -6,7 +6,6 @@ $(document).ready(function () {
     var jsonData = JSON.parse(localStorage.getItem("selectedStop"));
     console.log(jsonData.name + " " + jsonData.stop_id);
     jQuery(".page-header").find("small").text("Stop: " + jsonData.name);
-
     var routesArray = jsonData.routes;
     getRouteObjects(routesArray);
 });
@@ -15,16 +14,27 @@ function getRouteObjects(routesArray) {
     var URL = "http://api.transloc.com/1.2/routes.json?agencies=116";
     for(var i in routesArray) {
         console.log(routesArray[i]);
-        $.getJSON(URL, function(jsonData) {
-        var thisData = jsonData.data;
-        var thisAgency = "116";
-        for(var i in thisData.thisAgency) {
-            var thisName = thisData[i].long_name;
-            console.log(thisName);
-            $(".list-group").append('<li class="list-group-item">' + thisName + '</li>');
-        }
-    });
-    }
+
+    } // end for
+
+    var finalArr = [];
+
+    $.getJSON(URL, function(jsonData) {
+	        var thisData = jsonData.data[116];
+	       
+	        for(var i in thisData) {
+	            var thisName = thisData[i].long_name;
+	            var thisId = thisData[i].route_id;
+	            //console.log(thisName);
+	            console.log(thisId);
+	            if($.inArray(thisId,routesArray) != -1) {
+	            	finalArr.push(thisData[i]);
+					$(".list-group").append('<li class="list-group-item"><a data-parm="'+ i + '" href="./boardBus.html">' + thisName + '</li>');
+	            }
+	        }
+	});
+
+
 }
 
 
