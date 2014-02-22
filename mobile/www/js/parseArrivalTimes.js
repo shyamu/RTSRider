@@ -50,9 +50,9 @@ function getArrivalTime(route,stop) {
         $(".time-mins").text(diff);
 
         $(".board-bus").on("click", function (event) {
-            if(diff > 1) {
-                console.log("bus hasn't arrived yet");
-            } else {
+            //UNCOMMENT LATERif(diff > 1) {
+           //UNCOMMENT LATER     console.log("bus hasn't arrived yet");
+            //UNCOMMENT LATER } else {
                 console.log("boarding bus");
                 var stopLat = stop.location.lat;
                 var stopLng = stop.location.lng;
@@ -64,19 +64,20 @@ function getArrivalTime(route,stop) {
                         console.log(busId);
                         var busLat = thisData[i].location.lat;
                         var busLng = thisData[i].location.lng;
-                        if(distance(stopLat,stopLng,busLat,busLng,"K") <= .1) {
+                    // UNCOMMENT LATER if(distance(stopLat,stopLng,busLat,busLng,"K") <= .1) {
                             console.log("we got our bus " + busId);
                             console.log("at position " + i);
                             var dataToStore = JSON.stringify(thisData[i]);
                             console.log("storing: " + dataToStore);
                             localStorage.setItem("boardedBus", dataToStore);
+                            window.location = "selectArrivalStop.html";
                             break;
-                        } else {
-                            console.log("bus" + busId + "hasnt arrived");
-                        }
+                      // UNCOMMENT LATER } else {
+                       //UNCOMMENT LATER     console.log("bus" + busId + "hasnt arrived");
+                      // UNCOMMENT LATER }
                     } // end for
                 });
-            }
+          //UNCOMMENT LATER  }
             /*
             var param = $(this).attr("data-parm");
             var dataToStore = JSON.stringify(thisData[param]);
