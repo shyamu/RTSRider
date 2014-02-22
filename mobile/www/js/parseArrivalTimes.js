@@ -24,14 +24,21 @@ function getArrivalTime(route,stop) {
     
     $.getJSON(URL + URLAddition, function(jsonData) {
         var thisData = jsonData.data[0].arrivals;
-       
-        for(var i in thisData) {
-            var arrivalTime = thisData[i].arrival_at;
-           // var thisId = thisData[i].route_id;
-            console.log(arrivalTime);
-            //console.log(thisId);
-           
-        } // for
+        // get only first arrival time
+        // TODO: error handling when there are no arrival times
+        var arrivalTimeStr = thisData[0].arrival_at;
+        console.log("arrivalStr: " + arrivalTimeStr);
+
+        // get current time
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var mins = currentTime.getMinutes();
+        console.log("current: " + hours + ":" + mins);
+
+        var arrivalTime = new Date(arrivalTimeStr);
+        //arrivalTime = new Date(arrivalTime.getTime() + ( arrivalTime.getTimezoneOffset() * 60000 ) );
+        console.log("arrival: " + arrivalTime.getHours() + ":" + arrivalTime.getMinutes());
+      
 /*
         $("a").on("click", function (event) {
             var param = $(this).attr("data-parm");
