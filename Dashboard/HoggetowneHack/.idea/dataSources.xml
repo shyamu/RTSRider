@@ -5,7 +5,7 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/HoggetowneHack_development</jdbc-url>
-      <user-name>root</user-name>
+      <user-name>uroot</user-name>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails HoggetowneHack: test" uuid="a0995f56-876d-4c6f-8a6a-2870eecbcfc1">

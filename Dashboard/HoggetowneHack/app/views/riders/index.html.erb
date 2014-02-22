@@ -1,0 +1,40 @@
+<h1>Listing riders</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%= grid(@riders_grid) do |g|
+
+    g.column do |rider|
+      rider.id
+    end
+
+    g.column do |rider|
+      rider.title
+    end
+
+    g.column do |rider|
+      rider.description
+    end
+
+    g.column do |rider|
+      rider.archived? ? 'Yes' : 'No'
+    end
+
+    g.column do |rider|
+      link_to('Edit', edit_rider_path(rider))
+    end
+  end -%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rider', new_rider_path %>
