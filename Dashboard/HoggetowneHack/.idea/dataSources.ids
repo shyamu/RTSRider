@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails HoggetowneHack: development" uuid="22be96e9-3df5-46c4-bba2-dc2bb3e33731">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails HoggetowneHack: test" uuid="a0995f56-876d-4c6f-8a6a-2870eecbcfc1">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails HoggetowneHack: production" uuid="f765dd10-5306-44c8-9b5a-ccf4d83b4586">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
