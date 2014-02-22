@@ -5,7 +5,7 @@
 navigator.geolocation.getCurrentPosition(function(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-    var limitRadius = "400" // in meters
+    var limitRadius = "200" // in meters
     console.log("lat: " + lat + ", " + "long: " + long);
     var URL = "http://api.transloc.com/1.2/stops.json?agencies=116";
     var geoArea = "&geo_area=" + lat + "," + long + "|" + limitRadius;

@@ -49,17 +49,61 @@ function getArrivalTime(route,stop) {
         //set arrival time in html
         $(".time-mins").text(diff);
 
-      
-/*
-        $("a").on("click", function (event) {
+        $(".board-bus").on("click", function (event) {
+            //UNCOMMENT LATERif(diff > 1) {
+           //UNCOMMENT LATER     console.log("bus hasn't arrived yet");
+            //UNCOMMENT LATER } else {
+                console.log("boarding bus");
+                var stopLat = stop.location.lat;
+                var stopLng = stop.location.lng;
+                var URL = "http://api.transloc.com/1.2/vehicles.json?agencies=116&routes=" + routeId;
+                $.getJSON(URL, function(jsonData) {
+                    var thisData = jsonData.data[116];
+                    for(var i in thisData) {
+                        var busId = thisData[i].vehicle_id;
+                        console.log(busId);
+                        var busLat = thisData[i].location.lat;
+                        var busLng = thisData[i].location.lng;
+                    // UNCOMMENT LATER if(distance(stopLat,stopLng,busLat,busLng,"K") <= .1) {
+                            console.log("we got our bus " + busId);
+                            console.log("at position " + i);
+                            var dataToStore = JSON.stringify(thisData[i]);
+                            console.log("storing: " + dataToStore);
+                            localStorage.setItem("boardedBus", dataToStore);
+                            window.location = "selectArrivalStop.html";
+                            break;
+                      // UNCOMMENT LATER } else {
+                       //UNCOMMENT LATER     console.log("bus" + busId + "hasnt arrived");
+                      // UNCOMMENT LATER }
+                    } // end for
+                });
+          //UNCOMMENT LATER  }
+            /*
             var param = $(this).attr("data-parm");
             var dataToStore = JSON.stringify(thisData[param]);
             //console.log("storing: " + dataToStore);
             localStorage.setItem("selectedRoute",dataToStore);
+            */
     	});
-*/
+
 	});
     
 
 }
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var radlon1 = Math.PI * lon1/180
+    var radlon2 = Math.PI * lon2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
+}  
 
