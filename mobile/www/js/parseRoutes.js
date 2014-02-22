@@ -17,21 +17,27 @@ function getRouteObjects(routesArray) {
 
     } // end for
 
-    var finalArr = [];
 
     $.getJSON(URL, function(jsonData) {
-	        var thisData = jsonData.data[116];
-	       
-	        for(var i in thisData) {
-	            var thisName = thisData[i].long_name;
-	            var thisId = thisData[i].route_id;
-	            //console.log(thisName);
-	            console.log(thisId);
-	            if($.inArray(thisId,routesArray) != -1) {
-	            	finalArr.push(thisData[i]);
-					$(".list-group").append('<li class="list-group-item"><a data-parm="'+ i + '" href="./boardBus.html">' + thisName + '</li>');
-	            }
-	        }
+        var thisData = jsonData.data[116];
+       
+        for(var i in thisData) {
+            var thisName = thisData[i].long_name;
+            var thisId = thisData[i].route_id;
+            //console.log(thisName);
+            //console.log(thisId);
+            if($.inArray(thisId,routesArray) != -1) {
+				$(".list-group").append('<li class="list-group-item"><a data-parm="'+ i + '" href="./boardBus.html">' + thisName + '</li>');
+				console.log("added route object at pos: " + i);
+            }
+        } // for
+
+        $("a").on("click", function (event) {
+            var param = $(this).attr("data-parm");
+            var dataToStore = JSON.stringify(thisData[param]);
+            //console.log("storing: " + dataToStore);
+            localStorage.setItem("selectedRoute",dataToStore);
+    	});
 	});
 
 
