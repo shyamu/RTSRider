@@ -1,10 +1,23 @@
 HoggetowneHack::Application.routes.draw do
+
+  resources :riders
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'riders#index'
 
+
+  #def init  #:nodoc:
+  #  @query_store_model = ::Wice::get_query_store_model
+  #  @grid_name = params[:grid_name]
+  #  @notification_messages_dom_id = "#{@grid_name}_notification_messages"
+  #  @query_list_dom_id = "#{@grid_name}_query_list"
+  #
+  #end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

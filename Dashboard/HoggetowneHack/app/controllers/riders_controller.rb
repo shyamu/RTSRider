@@ -1,74 +1,30 @@
 class RidersController < ApplicationController
-  before_action :set_rider, only: [:show, :edit, :update, :destroy]
-
   # GET /riders
   # GET /riders.json
   def index
-    @rider_grid = initialize_grid(Rider)
+    @riders_grid = initialize_grid(Rider)
   end
-
-  # GET /riders/1
-  # GET /riders/1.json
-  def show
-  end
-
-  # GET /riders/new
-  def new
-    @rider = Rider.new
-  end
-
-  # GET /riders/1/edit
-  def edit
-  end
-
-  # POST /riders
-  # POST /riders.json
-  def create
-    @rider = Rider.new(rider_params)
-
-    respond_to do |format|
-      if @rider.save
-        format.html { redirect_to @rider, notice: 'Rider was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @rider }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @rider.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /riders/1
-  # PATCH/PUT /riders/1.json
-  def update
-    respond_to do |format|
-      if @rider.update(rider_params)
-        format.html { redirect_to @rider, notice: 'Rider was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @rider.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /riders/1
-  # DELETE /riders/1.json
-  def destroy
-    @rider.destroy
-    respond_to do |format|
-      format.html { redirect_to riders_url }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rider
-      @rider = Rider.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def rider_params
-      params[:rider]
-    end
 end
+#def index
+#  @col_headers = Customer.col_headers
+#
+#  # if @rows is nil, then index is being called directly (not coming from query method)
+#  if @rows.nil?
+#
+#    @page = params[:page].blank? ? 1 : params[:page]
+#    @items_per_page = params[:items_per_page].blank? ? 25 : params[:items_per_page]
+#
+#    start_time = params[:start_time]
+#    end_time = params[:end_time]
+#    if start_time.nil? or end_time.nil?
+#      @rows = Customer.paginate(:page => @page, :per_page => @items_per_page)
+#      #puts "#{start_time}, #{end_time}"
+#    else
+#      start_time = DateTime.parse(start_time).utc.strftime('%F %T')
+#      end_time = DateTime.parse(end_time).utc.strftime('%F %T')
+#      @rows = Customer.paginate(
+#          :conditions => ['updated_at >= ? AND updated_at <= ?', start_time, end_time],
+#          :page => @page, :per_page => @items_per_page)
+#    end
+#  end
+#end

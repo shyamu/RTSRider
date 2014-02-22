@@ -1,40 +1,33 @@
 <h1>Listing riders</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
+<%= grid(@riders_grid) do |g|
 
-  <tbody>
-  <%= grid(@riders_grid) do |g|
+  g.column :name => 'ID' do |rider|
+    rider.id
+  end
 
-    g.column do |rider|
-      rider.id
-    end
+  g.column :name => 'Stop On' do |rider|
+    rider.stop_on
+  end
 
-    g.column do |rider|
-      rider.title
-    end
+  g.column :name => 'Time On' do |rider|
+    rider.time_on
+  end
 
-    g.column do |rider|
-      rider.description
-    end
+  g.column :name => 'Stop Off' do |rider|
+    rider.stop_off
+  end
 
-    g.column do |rider|
-      rider.archived? ? 'Yes' : 'No'
-    end
+  g.column :name => 'Time Off' do |rider|
+    rider.time_off
+  end
 
-    g.column do |rider|
-      link_to('Edit', edit_rider_path(rider))
-    end
-  end -%>
-  </tbody>
-</table>
+  g.column :name => 'Time Difference' do |rider|
+    rider.time_difference
+  end
 
-<br>
+  g.column do |rider|
+    link_to('Edit', edit_rider_path(rider))
+  end
 
-<%= link_to 'New Rider', new_rider_path %>
+end -%>
