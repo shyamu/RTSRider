@@ -34,10 +34,16 @@ function getArrivalTime(route,stop) {
         var hours = currentTime.getHours();
         var mins = currentTime.getMinutes();
         console.log("current: " + hours + ":" + mins);
-
         var arrivalTime = new Date(arrivalTimeStr);
-        //arrivalTime = new Date(arrivalTime.getTime() + ( arrivalTime.getTimezoneOffset() * 60000 ) );
         console.log("arrival: " + arrivalTime.getHours() + ":" + arrivalTime.getMinutes());
+
+        // get time difference
+        if(arrivalTime < currentTime) {
+            arrivalTime.setDate(arrivalTime.getDate() + 1);
+        }
+        var diff = arrivalTime - currentTime; // diff is in milliseconds
+        var diff = diff/1000/60; // diff time is now in mins
+        console.log("time diff: " + diff + " mins");
       
 /*
         $("a").on("click", function (event) {
