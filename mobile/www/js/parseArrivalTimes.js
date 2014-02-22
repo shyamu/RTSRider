@@ -42,7 +42,8 @@ function getArrivalTime(route,stop) {
             arrivalTime.setDate(arrivalTime.getDate() + 1);
         }
         var diff = arrivalTime - currentTime; // diff is in milliseconds
-        var diff = diff/1000/60; // diff time is now in mins
+        diff = diff/1000/60; // diff time is now in mins
+        diff = diff.toFixed(0);
         console.log("time diff: " + diff + " mins");
       
 /*
