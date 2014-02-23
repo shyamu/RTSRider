@@ -1,14 +1,13 @@
 class CreateRiders < ActiveRecord::Migration
   def change
     create_table :riders do |t|
-      t.integer 'ID'
-      t.date 'Date'
-      t.integer 'Route_Number'
-      t.integer 'Stop_On'
-      t.time 'Time_On'
-      t.integer 'Stop_Off'
-      t.time 'Time_Off'
-      t.time 'Time_Difference'
+      t.date 'date'
+      t.integer 'routeNumber'
+      t.integer 'stopOn'
+      t.time 'timeOn'
+      t.integer 'stopOff'
+      t.time 'timeOff'
+      t.time 'timeDifference'
     end
   end
 end

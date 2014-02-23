@@ -14,8 +14,13 @@
 ActiveRecord::Schema.define(version: 20140222195427) do
 
   create_table "riders", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date    "date"
+    t.integer "routeNumber"
+    t.integer "stopOn"
+    t.time    "timeOn"
+    t.integer "stopOff"
+    t.time    "timeOff"
+    t.time    "timeDifference"
   end
 
 end
