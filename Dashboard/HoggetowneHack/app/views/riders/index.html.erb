@@ -1,34 +1,16 @@
 <%# show_filters: :when_filtered %>
 <h1>Regional Transit System</h1>
 
-<%= grid(@riders_grid) do |g|
+<%= define_grid(@riders_grid, hide_submit_button: true, hide_reset_button: true) do |g|
 
-  g.column :name => 'ID' do |rider|
-    rider.id
+  g.column name: 'Date', attribute: 'date', detach_with_id: :date_filter do |task|
+    task.date.to_s(:short)
   end
-
-  g.column :name => 'Stop On' do |rider|
-    rider.stop_on
-  end
-
-  g.column :name => 'Time On' do |rider|
-    rider.time_on
-  end
-
-  g.column :name => 'Stop Off' do |rider|
-    rider.stop_off
-  end
-
-  g.column :name => 'Time Off' do |rider|
-    rider.time_off
-  end
-
-  g.column :name => 'Time Difference' do |rider|
-    rider.time_difference
-  end
-
-  g.column do |rider|
-    link_to('Edit', edit_rider_path(rider))
-  end
+  g.column name: 'Route Number', attribute: 'routeNumber', detach_with_id: :routeNumberfilter
+  g.column name: 'Stop On', attribute: 'stopOn', detach_with_id: :stopOn_filter
+  g.column name: 'Time On', attribute: 'timeOn', detach_with_id: :timeOn_filter
+  g.column name: 'Stop Off', attribute: 'stopOff', detach_with_id: :stopOff_filter
+  g.column name: 'Time Off', attribute: 'timeOff', detach_with_id: :timeOff_filter
+  g.column name: 'Time Difference', attribute: 'timeDifference', detach_with_id: :timeDifference_filter
 
 end -%>
